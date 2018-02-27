@@ -6,13 +6,13 @@
 /*   By: egoodale <eligoodale1@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 14:33:38 by egoodale          #+#    #+#             */
-/*   Updated: 2018/02/22 16:41:33 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/02/27 11:20:42 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+/*t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*new;
 	t_list	*tmp;
@@ -32,4 +32,32 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 		lst = lst->next;
 	}
 	return (begin);
+}*/
+
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *))
+{
+	t_list	*first;
+	t_list	*prev;
+	t_list	*new;
+
+	first = NULL;
+	if (lst != NULL)
+	{
+		first = ft_lstnew(lst->content, lst->content_size);
+		if (first == NULL)
+			return (NULL);
+		first = f(first);
+		prev = first;
+		lst = lst->next;
+	}
+	while (lst != NULL)
+	{
+		new = ft_lstnew(lst->content, lst->content_size);
+		if (new == NULL)
+			return (NULL);
+		new = f(new);
+		prev->next = new;
+		lst = lst->next;
+	}
+	return (first);
 }
