@@ -6,7 +6,7 @@
 /*   By: egoodale <eligoodale1@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 14:33:38 by egoodale          #+#    #+#             */
-/*   Updated: 2018/02/27 11:23:05 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/02/27 11:39:25 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,26 @@
 	}
 	return (begin);
 }*/
-
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*first;
-	t_list	*prev;
-	t_list	*new;
+	t_list		*result;
+	t_list		*head;
+	t_list		*elem;
 
-	first = NULL;
-	if (lst != NULL)
+	if (!lst || !f)
+		return (NULL);
+	elem = f(lst);
+	if (!(result = ft_lstnew(elem->content, elem->content_size)))
+		return (NULL);
+	lst = lst->next;
+	head = result;
+	while (lst)
 	{
-		first = ft_lstnew(lst->content, lst->content_size);
-		if (first == NULL)
-			return (NULL);
-		first = f(first);
-		prev = first;
-		lst = lst->next;
-	}
-	while (lst != NULL)
-	{
-		new = ft_lstnew(lst->content, lst->content_size);
-		if (new == NULL)
-			return (NULL);
-		new = f(new);
-		prev->next = new;
-		lst = lst->next;
-	}
-	return (first);
+	  elem = f(lst);
+	  if (!(result->next = ft_lstnew(elem->content, elem->content_size)))
+		  return (NULL);
+	  result = result->next;
+	  lst = lst->next;
+  }
+	return (head);
 }
