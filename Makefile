@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: egoodale <eligoodale1@gmail.com>           +#+  +:+       +#+         #
+#    By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/21 11:46:19 by egoodale          #+#    #+#              #
-#    Updated: 2018/02/23 13:16:22 by egoodale         ###   ########.fr        #
+#    Updated: 2018/05/02 18:02:43 by egoodale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
-CFLAGS	=	-Wall -Werror -Wextra -I libft.h -c
+CFLAGS	=	-Wall -Werror -Wextra -I includes -c
 
 FILES 	= ft_wordcount.c \
 		  ft_toupper.c \
@@ -79,20 +79,34 @@ FILES 	= ft_wordcount.c \
 		  ft_isalnum.c \
 		  ft_intlen.c \
 		  ft_bzero.c \
-		  ft_atoi.c
+		  ft_atoi.c\
+		  get_next_line.c\
+		  ft_putnbr_unsigned.c\
+		  ft_vector.c\
+		  ft_realloc.c\
+		  ft_recalloc.c\
+		  ft_strzchr.c\
+		  ft_imaxtoa.c\
+		  ft_insert_str.c\
+		  ft_str_to_unicode.c\
+		  ft_wstrlen.c\
+		  ft_wstrdup.c\
+		  ft_wchrlen.c\
+		  ft_wstr_to_str.c\
+
 OBJ		= $(patsubst %.c, %.o, $(FILES))  
 
 all: $(NAME)
 		
 $(NAME):	
-		gcc $(CFLAGS) $(FILES)
-		ar rcs $(NAME) $(OBJ)
-		ranlib $(NAME)
+		@gcc $(CFLAGS) $(FILES)
+		@ar rcs $(NAME) $(OBJ)
+		@ranlib $(NAME)
 
 clean:
-		rm -f $(OBJ)
+		@rm -f $(OBJ)
 
 fclean: clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all

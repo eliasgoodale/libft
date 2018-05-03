@@ -3,28 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egoodale <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/16 09:25:23 by egoodale          #+#    #+#             */
-/*   Updated: 2018/02/20 18:24:11 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/04/25 15:46:05 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int nb)
+void	ft_putnbr(intmax_t nb)
 {
-	if (nb == -2147483648)
-	{
-		ft_putnbr(-214748364);
-		ft_putchar(8 + '0');
-	}
+	if (nb == LLONG_MIN)
+		ft_putstr("-9223372036854775807");
 	else
 	{
 		if (nb < 0)
 		{
 			ft_putchar('-');
-			nb *= -1;
+			nb = -nb;
 		}
 		if (nb >= 10)
 			ft_putnbr((nb / 10));

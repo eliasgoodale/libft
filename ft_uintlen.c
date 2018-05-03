@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_uintlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/21 17:53:19 by egoodale          #+#    #+#             */
-/*   Updated: 2018/04/25 22:39:49 by egoodale         ###   ########.fr       */
+/*   Created: 2018/04/25 15:57:12 by egoodale          #+#    #+#             */
+/*   Updated: 2018/04/25 15:59:49 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+int		ft_uintlen(uintmax_t n)
 {
-	if (!(ap) || !*ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	int len;
+
+	if (n == ULLONG_MAX)
+		return (20);
+	if (n == 0)
+		return (1);
+	len = 0;
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }

@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_wchrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/21 17:53:19 by egoodale          #+#    #+#             */
-/*   Updated: 2018/04/25 22:39:49 by egoodale         ###   ########.fr       */
+/*   Created: 2018/05/02 16:27:56 by egoodale          #+#    #+#             */
+/*   Updated: 2018/05/02 16:29:44 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+int		ft_wchrlen(wchar_t c)
 {
-	if (!(ap) || !*ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	if (c < (1 << 7))
+		return (1);
+	else if (c < (1 << 11))
+		return (2);
+	else if (c < (1 << 16))
+		return (3);
+	else if (c < (1 << 21))
+		return (4);
+	return (0);
 }

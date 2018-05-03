@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strzchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/21 17:53:19 by egoodale          #+#    #+#             */
-/*   Updated: 2018/04/25 22:39:49 by egoodale         ###   ########.fr       */
+/*   Created: 2018/05/01 17:15:31 by egoodale          #+#    #+#             */
+/*   Updated: 2018/05/01 17:15:35 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+size_t		ft_strzchr(const char *s, int c)
 {
-	if (!(ap) || !*ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	int				i;
+	unsigned char	a;
+
+	a = (unsigned char)c;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == a)
+			return (i);
+		i++;
+	}
+	if (s[i] == a)
+		return (ft_strlen(s) + 1);
+	return (0);
 }
