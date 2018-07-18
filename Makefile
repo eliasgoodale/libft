@@ -2,7 +2,7 @@
 NAME = libft.a
 HDR = include/libft.h
 OBJ_DIR = ./obj/
-
+CFLAGS = -Wall -Werror -Wextra -g
 GNL_DIR = ./get_next_line/
 GNL_HDR = include/get_next_line.h
 GNL_SRC = get_next_line.c
@@ -24,6 +24,13 @@ FT_PRINTF_SRC = check_mods.c \
 FT_PRINTF_OBJ = $(patsubst %.c, %.o, $(FT_PRINTF_SRC))
 PRINTF_OBJ_DIR = ./obj/printf_obj
 
+FT_BIT_DIR = ./ft_bits/
+FT_BIT_SRC =	ft_bitinsert.c \
+				ft_printbits.c \
+				get_msb.c
+FT_BIT_OBJ = $(patsubst %.c, %.o, $(FT_BIT_SRC))
+BIT_OBJ_DIR = ./obj/bit_obj/
+
 FT_CHR_DIR = ./ft_chr/
 FT_CHR_SRC =    ft_isalnum.c \
 				ft_isalpha.c \
@@ -31,7 +38,11 @@ FT_CHR_SRC =    ft_isalnum.c \
 				ft_isdigit.c \
 				ft_isprint.c \
 				ft_tolower.c \
-				ft_toupper.c
+				ft_toupper.c \
+				ft_wchrlen.c \
+				shift_char_to.c\
+				ft_charswap.c\
+				ft_isspace.c
 FT_CHR_OBJ = $(patsubst %.c, %.o, $(FT_CHR_SRC))
 CHR_OBJ_DIR = ./obj/chr_obj/
 
@@ -62,7 +73,8 @@ FT_LST_OBJ = $(patsubst %.c, %.o, $(FT_LST_SRC))
 LST_OBJ_DIR = ./obj/lst_obj/
 
 FT_STR_DIR = ./ft_str/
-FT_STR_SRC =    ft_atoi.c\
+FT_STR_SRC =    ft_skipspace.c\
+				ft_atoi.c\
 				ft_insert_str.c\
 				ft_sortwords.c\
 				ft_str_is_alpha.c\
@@ -103,6 +115,7 @@ FT_STR_SRC =    ft_atoi.c\
 				ft_strtrim.c\
 				ft_strzchr.c\
 				ft_vector.c\
+				ft_wordcount.c\
 				ft_wstr_to_str.c\
 				ft_wstrdup.c\
 				ft_wstrlen.c
@@ -134,23 +147,23 @@ FT_WRITE_SRC =  ft_putchar.c \
 				ft_putnbr_unsigned.c \
 				ft_putnchar.c \
 				ft_putstr.c \
-				ft_putstr_fd.c \
-				ft_wchrlen.c \
-				ft_wordcount.c
+				ft_putstr_fd.c
 FT_WRITE_OBJ = $(patsubst %.c, %.o, $(FT_WRITE_SRC))
 WRITE_OBJ_DIR = ./obj/write_obj/
 
 COMPILED =  $(FT_CHR_OBJ) $(FT_CONV_OBJ) $(FT_INT_OBJ) \
 			$(FT_LST_OBJ) $(FT_STR_OBJ) $(FT_MEM_OBJ) \
-			$(FT_WRITE_OBJ) $(FT_PRINTF_OBJ) $(GNL_OBJ)
+			$(FT_WRITE_OBJ) $(FT_PRINTF_OBJ) $(GNL_OBJ) \
+			$(FT_BIT_OBJ)
 
 OBJ_DIRS = $(CHR_OBJ_DIR) $(CONV_OBJ_DIR) $(INT_OBJ_DIR) \
 			$(LST_OBJ_DIR) $(STR_OBJ_DIR) $(MEM_OBJ_DIR) \
 			$(WRITE_OBJ_DIR) $(OBJ_DIR) $(PRINTF_OBJ_DIR)\
-			$(GNL_OBJ_DIR)
+			$(GNL_OBJ_DIR) $(BIT_OBJ_DIR)
 all: $(NAME) obj_cleanup
 
 obj_cleanup: $(NAME) $(OBJ_DIRS)
+	@mv $(FT_BIT_OBJ) $(BIT_OBJ_DIR)
 	@mv $(FT_CHR_OBJ) $(CHR_OBJ_DIR)
 	@mv $(FT_CONV_OBJ) $(CONV_OBJ_DIR)
 	@mv $(FT_INT_OBJ) $(INT_OBJ_DIR)
@@ -170,6 +183,8 @@ $(FT_PRINTF_OBJ): %.o: $(FT_PRINTF_DIR)%.c
 	@$(CC) -c $(CFLAGS) -I $(FT_PRINTF_DIR) -I $(HDR) -I $(FT_PRINTF_HDR) $< -o $@
 $(GNL_OBJ): %.o: $(GNL_DIR)%.c
 	@$(CC) -c $(CFLAGS) -I $(GNL_DIR) -I $(HDR) -I $(GNL_HDR) $< -o $@
+$(FT_BIT_OBJ): %.o: $(FT_BIT_DIR)%.c
+	@$(CC) -c $(CFLAGS) -I $(FT_BIT_DIR) -I $(HDR) $< -o $@
 $(FT_CHR_OBJ): %.o: $(FT_CHR_DIR)%.c
 	@$(CC) -c $(CFLAGS) -I $(FT_CHR_DIR) -I $(HDR) $< -o $@
 $(FT_CONV_OBJ): %.o: $(FT_CONV_DIR)%.c
@@ -191,6 +206,8 @@ $(GNL_OBJ_DIR): $(OBJ_DIR)
 	@mkdir $(GNL_OBJ_DIR)
 $(PRINTF_OBJ_DIR): $(OBJ_DIR)
 	@mkdir $(PRINTF_OBJ_DIR)
+$(BIT_OBJ_DIR): $(OBJ_DIR)
+	@mkdir $(BIT_OBJ_DIR)
 $(CHR_OBJ_DIR): $(OBJ_DIR)
 	@mkdir $(CHR_OBJ_DIR)
 $(CONV_OBJ_DIR): $(OBJ_DIR)

@@ -6,11 +6,29 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 14:52:46 by egoodale          #+#    #+#             */
-/*   Updated: 2018/06/02 15:32:39 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/07/17 18:11:34 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <libft.h>
+
+void	ft_subvector_slide(t_vector *vector, char *data, char *target, size_t data_len)
+{
+	VAR(int, orient, target >= data ? 1 : -1);
+	VAR(char *, start, ~orient ? data : data + (data_len - 1));
+	VAR(char *, subt, start + (orient * data_len));
+	VAR(size_t, shifts, ~orient ? (target - subt) : (subt - target));
+	if(shifts < data_len)
+		return ;
+	while (shifts-- != 0)
+	{
+		ft_charswap(start, subt);
+		start += orient;
+		subt += orient;
+	}
+	ft_subvector_slide(vector, start, target, data_len);
+}
+
 
 int		ft_vector_init(t_vector *vector, size_t init_cap)
 {

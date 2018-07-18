@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 14:48:06 by egoodale          #+#    #+#             */
-/*   Updated: 2018/06/03 20:38:30 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/07/17 13:19:17 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <libft.h>
 
 int		ft_toupper(int c)
 {

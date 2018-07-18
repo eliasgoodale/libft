@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 16:32:14 by egoodale          #+#    #+#             */
-/*   Updated: 2018/06/02 15:32:39 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/07/17 13:19:17 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include <libft.h>
 
 void	ft_bzero(void *s, size_t n)
 {
