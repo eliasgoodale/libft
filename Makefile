@@ -73,7 +73,8 @@ FT_LST_OBJ = $(patsubst %.c, %.o, $(FT_LST_SRC))
 LST_OBJ_DIR = ./obj/lst_obj/
 
 FT_STR_DIR = ./ft_str/
-FT_STR_SRC =    ft_skipspace.c\
+FT_STR_SRC =	find_next_any.c\
+				ft_skipspace.c\
 				ft_atoi.c\
 				ft_insert_str.c\
 				ft_sortwords.c\
