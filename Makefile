@@ -31,6 +31,12 @@ FT_BIT_SRC =	ft_bitinsert.c \
 FT_BIT_OBJ = $(patsubst %.c, %.o, $(FT_BIT_SRC))
 BIT_OBJ_DIR = ./obj/bit_obj/
 
+FT_MATH_DIR = ./ft_math/
+FT_MATH_SRC =	ft_lcm.c\
+				#ft_rand.c
+FT_MATH_OBJ = $(patsubst %.c, %.o, $(FT_MATH_SRC))
+MATH_OBJ_DIR = ./obj/math_obj/
+
 FT_CHR_DIR = ./ft_chr/
 FT_CHR_SRC =    ft_isalnum.c \
 				ft_isalpha.c \
@@ -73,7 +79,9 @@ FT_LST_OBJ = $(patsubst %.c, %.o, $(FT_LST_SRC))
 LST_OBJ_DIR = ./obj/lst_obj/
 
 FT_STR_DIR = ./ft_str/
-FT_STR_SRC =	find_next_any.c\
+FT_STR_SRC =	ft_find_replace.c\
+				find_next_any.c\
+				find_last_any.c\
 				ft_skipspace.c\
 				ft_atoi.c\
 				ft_insert_str.c\
@@ -114,6 +122,7 @@ FT_STR_SRC =	find_next_any.c\
 				ft_strstr.c\
 				ft_strsub.c\
 				ft_strtrim.c\
+				ft_strtok.c\
 				ft_strzchr.c\
 				ft_vector.c\
 				ft_wordcount.c\
@@ -155,16 +164,18 @@ WRITE_OBJ_DIR = ./obj/write_obj/
 COMPILED =  $(FT_CHR_OBJ) $(FT_CONV_OBJ) $(FT_INT_OBJ) \
 			$(FT_LST_OBJ) $(FT_STR_OBJ) $(FT_MEM_OBJ) \
 			$(FT_WRITE_OBJ) $(FT_PRINTF_OBJ) $(GNL_OBJ) \
-			$(FT_BIT_OBJ)
+			$(FT_BIT_OBJ) $(FT_MATH_OBJ)
 
 OBJ_DIRS = $(CHR_OBJ_DIR) $(CONV_OBJ_DIR) $(INT_OBJ_DIR) \
 			$(LST_OBJ_DIR) $(STR_OBJ_DIR) $(MEM_OBJ_DIR) \
 			$(WRITE_OBJ_DIR) $(OBJ_DIR) $(PRINTF_OBJ_DIR)\
-			$(GNL_OBJ_DIR) $(BIT_OBJ_DIR)
+			$(GNL_OBJ_DIR) $(BIT_OBJ_DIR) $(MATH_OBJ_DIR)
+
 all: $(NAME) obj_cleanup
 
 obj_cleanup: $(NAME) $(OBJ_DIRS)
 	@mv $(FT_BIT_OBJ) $(BIT_OBJ_DIR)
+	@mv $(FT_MATH_OBJ) $(MATH_OBJ_DIR)
 	@mv $(FT_CHR_OBJ) $(CHR_OBJ_DIR)
 	@mv $(FT_CONV_OBJ) $(CONV_OBJ_DIR)
 	@mv $(FT_INT_OBJ) $(INT_OBJ_DIR)
@@ -186,6 +197,8 @@ $(GNL_OBJ): %.o: $(GNL_DIR)%.c
 	@$(CC) -c $(CFLAGS) -I $(GNL_DIR) -I $(HDR) -I $(GNL_HDR) $< -o $@
 $(FT_BIT_OBJ): %.o: $(FT_BIT_DIR)%.c
 	@$(CC) -c $(CFLAGS) -I $(FT_BIT_DIR) -I $(HDR) $< -o $@
+$(FT_MATH_OBJ): %.o: $(FT_MATH_DIR)%.c
+	@$(CC) -c $(CFLAGS) -I $(FT_MATH_DIR) -I $(HDR) $< -o $@
 $(FT_CHR_OBJ): %.o: $(FT_CHR_DIR)%.c
 	@$(CC) -c $(CFLAGS) -I $(FT_CHR_DIR) -I $(HDR) $< -o $@
 $(FT_CONV_OBJ): %.o: $(FT_CONV_DIR)%.c
@@ -209,6 +222,8 @@ $(PRINTF_OBJ_DIR): $(OBJ_DIR)
 	@mkdir $(PRINTF_OBJ_DIR)
 $(BIT_OBJ_DIR): $(OBJ_DIR)
 	@mkdir $(BIT_OBJ_DIR)
+$(MATH_OBJ_DIR): $(OBJ_DIR)
+	@mkdir $(MATH_OBJ_DIR)	
 $(CHR_OBJ_DIR): $(OBJ_DIR)
 	@mkdir $(CHR_OBJ_DIR)
 $(CONV_OBJ_DIR): $(OBJ_DIR)

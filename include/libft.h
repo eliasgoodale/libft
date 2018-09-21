@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 09:54:52 by egoodale          #+#    #+#             */
-/*   Updated: 2018/07/22 13:26:26 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/07/28 12:20:45 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ typedef struct		s_vector
 uintmax_t			ft_bitinsert(uintmax_t nb, uintmax_t ins, unsigned lb, unsigned ub);
 void				ft_printbits(uintmax_t nb);
 uintmax_t			get_msb(uintmax_t nb);
+
+/*
+** Math Functions
+*/
+int					ft_lcm(int a, int b);
+double				ft_rand(int seed);
 
 /*
 ** Character
@@ -153,6 +159,7 @@ char				*ft_strnstr(const char *haystack, const char *needle,
 					size_t len);
 void				shift_char_to(char *selected, char *target);
 char				*find_next_any(char *haystack, const char *search_list);
+char				*find_last_any(char *haystack, const char *search_list);
 char				*ft_strnew(size_t size);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strndup(const char *s1, size_t n);
@@ -193,8 +200,7 @@ size_t				ft_arrlen(char **arr);
 ** Vector-type String Buffer
 */
 
-void				ft_subvector_slide(t_vector *vector, char *data, char *target,
-					size_t data_len);
+void				ft_subvector_slide(char *data, char *target, size_t data_len);
 int					ft_vector_init(t_vector *vector, size_t init_cap);
 void				ft_vector_append(t_vector *vector, char *newdata);
 void				ft_vector_resize(t_vector *vector, size_t min);

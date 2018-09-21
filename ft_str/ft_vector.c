@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 14:52:46 by egoodale          #+#    #+#             */
-/*   Updated: 2018/07/21 18:49:32 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/07/23 15:29:27 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int		ft_vectorspace_init(t_vector *vspace[], size_t init_cap, size_t size)
 	return (0);
 }
 
-void	ft_subvector_slide(t_vector *vector, char *data, char *target, size_t data_len)
+void	ft_subvector_slide(char *data, char *targ, size_t data_len)
 {
-	VAR(int, orient, target >= data ? 1 : -1);
+	VAR(int, orient, targ >= data ? 1 : -1);
 	VAR(char *, start, ~orient ? data : data + (data_len - 1));
 	VAR(char *, subt, start + (orient * data_len));
-	VAR(int, shifts, ~orient ? (target - subt) : (subt - target));
+	VAR(int, shifts, ~orient ? (targ - subt) : (subt - targ));
 	if(shifts < (int)(~orient ? data_len : data_len - 1))
 		return ;
 	while (shifts-- != (~orient ? 0 : -1))
@@ -44,7 +44,7 @@ void	ft_subvector_slide(t_vector *vector, char *data, char *target, size_t data_
 		start += orient;
 		subt += orient;
 	}
-	ft_subvector_slide(vector, start, target, data_len);
+	ft_subvector_slide(start, targ, data_len);
 }
 
 
