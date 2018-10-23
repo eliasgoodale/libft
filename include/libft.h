@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 09:54:52 by egoodale          #+#    #+#             */
-/*   Updated: 2018/07/28 12:20:45 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/10/20 17:52:16 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,11 +187,13 @@ void				ft_str_toupper(char *s);
 int					ft_str_is_uppercase(char *str);
 int					ft_str_is_printable(char *str);
 int					ft_str_is_numeric(char *str);
+char				*ft_join(char *s1, char *joiner, char*s2);
 int					ft_str_is_lowercase(char *str);
 int					ft_str_is_alpha(char *str);
 char				*ft_strfill(char *s, char c, size_t n);
 void				ft_sortwords(char **tab, ssize_t size);
 char				*ft_skipspace(char *s);
+char				*ft_prepend_str(char *prefix, char *suffix);
 void				ft_insert_str(char **s1, char *s2);
 void				ft_freestrarr(char **arr);
 char				*ft_flattenarr(char **arr);
@@ -200,6 +202,9 @@ size_t				ft_arrlen(char **arr);
 ** Vector-type String Buffer
 */
 
+t_vector			**ft_vectorspace_create(size_t init_cap, size_t size);
+t_vector			*ft_vector_create(size_t init_cap);
+void				ft_vectorspace_free(t_vector **vspace, int size);
 void				ft_subvector_slide(char *data, char *target, size_t data_len);
 int					ft_vector_init(t_vector *vector, size_t init_cap);
 void				ft_vector_append(t_vector *vector, char *newdata);

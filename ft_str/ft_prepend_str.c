@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_prepend_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/21 20:42:47 by egoodale          #+#    #+#             */
-/*   Updated: 2018/10/22 11:44:49 by egoodale         ###   ########.fr       */
+/*   Created: 2018/10/20 11:48:03 by egoodale          #+#    #+#             */
+/*   Updated: 2018/10/20 11:50:30 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char 	*ft_prepend_str(char *prefix, char *suffix)
 {
-	char	*u_str;
-	size_t	i;
-	size_t	j;
-	size_t	s1_len;
-	size_t	s2_len;
-
-	if (!s1 || !s2)
+	VAR(char*, ret, NULL);
+	VAR(int, i, -1);
+	VAR(int, j, -1);
+	if (!(ret = (char *)malloc(sizeof(char) * 
+        (ft_strlen(prefix) + ft_strlen(suffix) + 1))))
 		return (NULL);
-	i = -1;
-	j = -1;
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (!(u_str = ft_strnew((s1_len + s2_len + 1))))
-		return (NULL);
-	while (++i < s1_len)
-		*(u_str + i) = *(s1 + i);
-	while (++j < s2_len)
-		*(u_str + i++) = *(s2 + j);
-	u_str[i] = '\0';
-	return (u_str);
+	while(prefix[++i])
+		ret[i] = prefix[i];
+	while(suffix[++j])
+		ret[i++] = suffix[j];
+	ret[i] = '\0';
+	return (ret);
 }

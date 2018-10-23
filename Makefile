@@ -79,7 +79,12 @@ FT_LST_OBJ = $(patsubst %.c, %.o, $(FT_LST_SRC))
 LST_OBJ_DIR = ./obj/lst_obj/
 
 FT_STR_DIR = ./ft_str/
-FT_STR_SRC =	ft_find_replace.c\
+FT_STR_SRC =	ft_join.c\
+				ft_prepend_str.c\
+				ft_freestrarr.c\
+				ft_vector_create.c\
+				ft_arrlen.c\
+				ft_find_replace.c\
 				find_next_any.c\
 				find_last_any.c\
 				ft_skipspace.c\

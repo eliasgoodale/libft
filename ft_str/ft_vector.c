@@ -6,47 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 14:52:46 by egoodale          #+#    #+#             */
-/*   Updated: 2018/07/23 15:29:27 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/10/18 18:14:14 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-
-int		ft_vectorspace_init(t_vector *vspace[], size_t init_cap, size_t size)
-{
-	VAR(size_t, i, -1);
-	if (!vspace || !init_cap)
-		return (-1);
-	if(!(vspace = ft_memalloc(sizeof(t_vector *) * size)))
-		return (-1);
-	while(++i < size)
-		if(~ft_vector_init(vspace[i], init_cap))
-			continue ;
-		else
-		{
-			free(vspace);
-			return (-1);
-		}
-	return (0);
-}
-
-void	ft_subvector_slide(char *data, char *targ, size_t data_len)
-{
-	VAR(int, orient, targ >= data ? 1 : -1);
-	VAR(char *, start, ~orient ? data : data + (data_len - 1));
-	VAR(char *, subt, start + (orient * data_len));
-	VAR(int, shifts, ~orient ? (targ - subt) : (subt - targ));
-	if(shifts < (int)(~orient ? data_len : data_len - 1))
-		return ;
-	while (shifts-- != (~orient ? 0 : -1))
-	{
-		ft_charswap(start, subt);
-		start += orient;
-		subt += orient;
-	}
-	ft_subvector_slide(start, targ, data_len);
-}
-
 
 int		ft_vector_init(t_vector *vector, size_t init_cap)
 {
