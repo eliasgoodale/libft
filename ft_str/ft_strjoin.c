@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 20:42:47 by egoodale          #+#    #+#             */
-/*   Updated: 2018/10/22 11:44:49 by egoodale         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:01:37 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../include/libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

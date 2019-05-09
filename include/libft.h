@@ -6,14 +6,14 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 09:54:52 by egoodale          #+#    #+#             */
-/*   Updated: 2018/10/20 17:52:16 by egoodale         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:02:07 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef LIBFT_H
 #	define LIBFT_H
 
-#include <macrosoft.h>
+#include "../include/macrosoft.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>

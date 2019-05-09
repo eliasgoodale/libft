@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 11:48:03 by egoodale          #+#    #+#             */
-/*   Updated: 2018/10/20 11:50:30 by egoodale         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:01:37 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../include/libft.h"
 
 char 	*ft_prepend_str(char *prefix, char *suffix)
 {

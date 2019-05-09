@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 11:35:22 by egoodale          #+#    #+#             */
-/*   Updated: 2018/07/22 16:19:43 by egoodale         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:01:37 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../include/libft.h"
 
 char *ft_strtok(char *s, const char *delim)
 {

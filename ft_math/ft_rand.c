@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 11:49:35 by egoodale          #+#    #+#             */
-/*   Updated: 2018/07/29 11:37:22 by egoodale         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:01:37 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../include/libft.h"
 
 /*
 *	The Lehmer Generator or "multipicative congruential random-number generator"

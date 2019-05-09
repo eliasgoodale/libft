@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 11:34:44 by egoodale          #+#    #+#             */
-/*   Updated: 2018/07/17 13:19:17 by egoodale         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:01:37 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../include/libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
